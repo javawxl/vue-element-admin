@@ -37,14 +37,15 @@ module.exports = {
       errors: true
     },
     // 这里是mock数据或后台服务
-    before: require('./mock/mock-server.js'),
+    // before: require('./mock/mock-server.js'),
     proxy: {
       [process.env.VUE_APP_BASE_API]: {
-        target: `http://localhost:8080`,
+        target: `http://localhost:8080/`,
         changeOrigin: true,
         pathRewrite: {
           ['^' + process.env.VUE_APP_BASE_API]: ''
-        }
+        },
+        secure: false // 如果是https接口，需要配置这个参数
       }
     },
     disableHostCheck: true
