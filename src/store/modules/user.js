@@ -67,7 +67,8 @@ const actions = {
         commit('SET_NAME', username)
         commit('SET_AVATAR', avatar)
         commit('SET_INTRODUCTION', introduction)
-        resolve(data)
+        // resolve(data)
+        resolve(data.data)
       }).catch(error => {
         reject(error)
       })
