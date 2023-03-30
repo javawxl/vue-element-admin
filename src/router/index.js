@@ -130,6 +130,29 @@ export const constantRoutes = [
  */
 export const asyncRoutes = [
   {
+    path: '/system', // parent path, must start with slash
+    component: Layout,
+    redirect: '/system/index',
+    alwaysShow: true,
+    name: 'SystemManager',
+    meta: {
+      title: 'systemManager',
+      icon: 'user',
+      roles: ['admin']
+    },
+    children: [
+      {
+        path: 'index', // sub path
+        component: () => import('@/views/system/index'),
+        name: 'UserManager',
+        meta: {
+          title: 'userManager',
+          roles: ['admin']
+        }
+      }
+    ]
+  },
+  {
     path: '/permission',
     component: Layout,
     redirect: '/permission/page',
